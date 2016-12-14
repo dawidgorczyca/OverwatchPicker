@@ -1,18 +1,30 @@
-import React, { Component, PropTypes } from 'react';
-import PickerComponent from './PickerComponent';
+import React, { PropTypes } from 'react'
+import PickerComponent from './PickerComponent'
+
+let spots = []
 
 class PickersListComponent extends React.Component {
-  render() {
-    let spots = [];
+
+  componentWillMount(){
+    this.generateSpots()
+  }
+
+  generateSpots = () => {
     for(let i = 0; i < this.props.teamSize; i++){
+      this.props.addSpot(i)
       spots.push(
         <PickerComponent
           id={i}
-          handleHero={this.props.handleCharacter}
+          key={i}
+          editSpotHero={this.props.editSpotHero}
           handlePlayer={this.props.handlePlayer}
         />
       )
     }
+  }
+
+  render() {
+    
     return (
       <div>
         {spots}
@@ -22,12 +34,8 @@ class PickersListComponent extends React.Component {
 }
 
 PickersListComponent.propTypes = {
-  team: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    completed: PropTypes.bool.isRequired,
-    hero: PropTypes.object.isRequired
-  })),
+  team: PropTypes.array.isRequired,
   teamSize: PropTypes.number.isRequired
 }
 
-export default PickersListComponent;
+export default PickersListComponent

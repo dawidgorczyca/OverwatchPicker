@@ -1,24 +1,13 @@
 import { connect } from 'react-redux'
-import { setHero, setPlayer } from '../actions'
+import { setHero, setPlayer, addSpot, editSpotHero } from '../actions'
 import PickersListComponent from '../components/PickersListComponent'
-
-// const getVisibleTodos = (todos, filter) => {
-//   switch (filter) {
-//     case 'SHOW_ALL':
-//       return todos
-//     case 'SHOW_COMPLETED':
-//       return todos.filter(t => t.completed)
-//     case 'SHOW_ACTIVE':
-//       return todos.filter(t => !t.completed)
-//   }
-// }
 
 const teamSize = 6
 
 const mapStateToProps = (state) => {
   return {
     team: state.team,
-    teamSize: teamSize
+    teamSize: teamSize,
   }
 }
 
@@ -29,6 +18,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     handlePlayer: (id, name) => {
       dispatch(setPlayer(id, name))
+    },
+    addSpot: (id) => {
+      dispatch(addSpot(id))
+    },
+    editSpotHero: (id) => {
+      dispatch(editSpotHero(id, name))
     }
   }
 }
