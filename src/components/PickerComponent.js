@@ -7,7 +7,9 @@ class PickerComponent extends React.Component {
         <h2><small>Character name:</small></h2>
         <p><small>Character role:</small> </p>
         <input type="text" placeholder="Enter character name"/>
-        <button type="button" onClick={this.props.handleHero}>Select</button>
+        <button type="button"
+        onClick={() => this.props.handleHero()}
+        >Select</button>
         <br/><br/>
         <input type="text" placeholder="Player name"/>
         <button type="button" onClick={this.props.handlePlayer}>Set</button>

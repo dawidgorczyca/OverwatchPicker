@@ -13,9 +13,12 @@ import PickersListComponent from '../components/PickersListComponent'
 //   }
 // }
 
+const teamSize = 6
+
 const mapStateToProps = (state) => {
   return {
-    team: state.team
+    team: state.team,
+    teamSize: teamSize
   }
 }
 
