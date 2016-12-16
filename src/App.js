@@ -1,15 +1,18 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
+import React, { Component } from 'react'
 import { createStore } from 'redux'
-import overwatchPicker from './reducers'
-import App from './components/App'
+import { Provider } from 'react-redux'
 
-const store = createStore(overwatchPicker, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import overwatchPicker from './reducers/teamReducer'
+import PickerCollection from './containers/pickerCollection'
 
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-)
+const store = (window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__()(createStore) : createStore)(overwatchPicker)
+
+export default class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <PickerCollection/>
+      </Provider>
+    )
+  }
+}
