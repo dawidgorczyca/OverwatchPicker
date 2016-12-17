@@ -19,6 +19,7 @@ class PickerComponent extends React.Component {
         <input type="text" value={this.state.heroName} onChange={this.handleChange}/>
         <button onClick={() => this.props.setHeroAction(this.state.heroName)}>Set Hero</button>
         <p><small>Character role:</small></p>
+        <img src={process.env.PUBLIC_URL + '/assets/heroes/portrait_genji.png'} />
       </div>
     )
   }
