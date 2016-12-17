@@ -13,13 +13,25 @@ function validateData(dataCode){
   errorsToCreate = []
   warningsToCreate = []
 
-  let addError = (error) => {
-    errorsToCreate.push(error)
+  let addMsg = (type,data) => {
+    switch (type) {
+      case errors.type:
+        errorsToCreate.push(data)
+        break
+      case warnings.type:
+        warningsToCreate.push(data)
+        break
+      default:
+        return;
+    }
   }
 
   switch (dataCode) {
     case errors.hero_not_found.code:
-      addError(errors.hero_not_found)
+      addMsg(errors.type, errors.hero_not_found)
+      break
+    case errors.hero_empty.code:
+      addMsg(errors.type, errors.hero_empty)
       break
     default:
       return;
@@ -28,7 +40,14 @@ function validateData(dataCode){
 
 function searchForHero(heroName){
   let errorMsg = null
-  let results = heroes.find(hero => hero.name.toLowerCase() === heroName.toLowerCase())
+  let results = {}
+
+  if(!heroName) {
+    errorMsg = errors.hero_empty.code
+    validateData(errorMsg)
+    return results;
+  }
+  results = heroes.find(hero => hero.name.toLowerCase() === heroName.toLowerCase())
   if(results === undefined){
     errorMsg = errors.hero_not_found.code
   }
@@ -61,8 +80,10 @@ const reducer = (state = INITIAL_STATE, action, heroes) => {
     case SET_PLAYER:
       state = update(state, { player: action.player })
       break
+    default:
+      state = update(state)
   }
-  state = update(state, { errors: errorsToCreate })
+  state = update(state, { errors: errorsToCreate, warnings: warningsToCreate })
   return state
 }
 

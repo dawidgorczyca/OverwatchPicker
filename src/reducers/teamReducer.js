@@ -29,6 +29,10 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state,
         PICKER_INITIAL_STATE
       ]
+    default:
+      return [
+        ...state
+      ]
   }
   return state
 }
