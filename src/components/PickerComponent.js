@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { heroUrl } from '../statics/TypesAndDefaults'
 
 class PickerComponent extends React.Component {
    constructor(props) {
@@ -8,18 +9,28 @@ class PickerComponent extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  getPortrait() {
+    const props = this.props.picker
+    if(props.hero && props.hero.name){
+      return process.env.PUBLIC_URL + heroUrl + 'portrait_' + props.hero.name.toLowerCase() + '.png'
+    } else {
+      return process.env.PUBLIC_URL + heroUrl + 'portrait_dummy.png'
+    }
+  }
+
   handleChange(event) {
     this.setState({heroName: event.target.value});
   }
 
   render() {
+    const portraitUrl = this.getPortrait()
     return (
       <div>
         <h2><small>Character name:</small></h2>
         <input type="text" value={this.state.heroName} onChange={this.handleChange}/>
         <button onClick={() => this.props.setHeroAction(this.state.heroName)}>Set Hero</button>
         <p><small>Character role:</small></p>
-        <img src={process.env.PUBLIC_URL + '/assets/heroes/portrait_genji.png'} />
+        <img src={portraitUrl}/>
       </div>
     )
   }

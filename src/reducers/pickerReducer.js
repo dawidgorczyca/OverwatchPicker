@@ -65,7 +65,7 @@ export const setPlayerAction = () => ({
 })
 
 export const INITIAL_STATE = {
-  hero: {},
+  hero: heroTemplate,
   player: {},
   completed: false,
   warnings: [],

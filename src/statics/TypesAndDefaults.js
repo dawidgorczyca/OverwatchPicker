@@ -16,3 +16,4 @@ export const warnings = {
     code: 'hero_duplicate'
   },
 }
+export const heroUrl = '/assets/heroes/'
