@@ -23,13 +23,14 @@ class PickerComponent extends React.Component {
   }
 
   render() {
+    const props = this.props.picker
     const portraitUrl = this.getPortrait()
     return (
       <div>
-        <h2><small>Character name:</small></h2>
+        <h2><small>Character name:</small> {props.hero.name}</h2>
         <input type="text" value={this.state.heroName} onChange={this.handleChange}/>
         <button onClick={() => this.props.setHeroAction(this.state.heroName)}>Set Hero</button>
-        <p><small>Character role:</small></p>
+        <p><small>Character role:</small> {props.hero.role}</p>
         <img src={portraitUrl}/>
       </div>
     )
