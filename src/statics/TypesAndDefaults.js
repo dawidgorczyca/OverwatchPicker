@@ -50,5 +50,9 @@ export const roles = [
   {
     name: 'support',
     description: 'Focusing on backing up the team.'
+  },
+  {
+    name: 'healer',
+    description: 'Self explainatory.'
   }
 ]

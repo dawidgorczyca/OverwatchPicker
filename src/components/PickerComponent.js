@@ -1,11 +1,13 @@
 import React from 'react';
 import { heroUrl } from '../statics/TypesAndDefaults'
+import { heroes } from '../statics/heroes'
 
 class PickerComponent extends React.Component {
    constructor(props) {
     super(props);
-    this.state = {heroName: ''};
-
+    this.state = {
+      heroName: ''
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -56,8 +58,11 @@ class PickerComponent extends React.Component {
           </div>
         </div>
 
-        <div className="picker-list">
-        </div>
+        <ul className="picker-list">
+          {heroes.map((hero, index) =>
+            <li key={index}>{hero.name}</li>
+          )}
+        </ul>
       </div>
     )
   }
