@@ -1,28 +1,38 @@
-.App {
+.picker {
+  display: block;
+  margin: 20px;
+  width: 180px;
+  height: 100px;
+}
+.picker-hero {
+  float: left;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: silver;
+}
+.picker-hero--name, .picker-hero--role {
+  position: absolute;
   text-align: center;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.picker-hero--name {
+  top: 0px;
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.picker-hero--role {
+  bottom: 0px;
 }
-
-.App-intro {
-  font-size: large;
+.picker-hero--portrait {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.picker-hero--portrait img {
+  width: 100px;
 }
-
-.picker {
-  margin-top: 20px;
+.picker-player {
+  float: left;
+  width: 80px;
+  height: 100px;
+  background-color: gray;
 }
