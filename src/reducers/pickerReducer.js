@@ -1,5 +1,5 @@
 import { heroes, heroTemplate } from '../statics/heroes'
-import { errors, warnings } from '../statics/TypesAndDefaults'
+import { errors, warnings, playerObj } from '../statics/TypesAndDefaults'
 
 const SET_HERO = 'picker/SET_HERO'
 const SET_PLAYER = 'picker/SET_PLAYER'
@@ -66,10 +66,10 @@ export const setPlayerAction = () => ({
 
 export const INITIAL_STATE = {
   hero: heroTemplate,
-  player: {},
-  completed: false,
+  player: playerObj,
   warnings: [],
-  errors: []
+  errors: [],
+  completed: false
 }
 
 const reducer = (state = INITIAL_STATE, action, heroes) => {

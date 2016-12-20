@@ -34,7 +34,6 @@ const reducer = (state = INITIAL_STATE, action) => {
         ...state
       ]
   }
-  return state
 }
 
 export default reducer

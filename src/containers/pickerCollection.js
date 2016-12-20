@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 
 import Picker from '../components/PickerComponent'
 import bindIndexToActionCreators from '../store/bindIndexToActionCreators'
-import { bindIndexToActionCreator, addPickerAction } from '../reducers/teamReducer'
+import { addPickerAction } from '../reducers/teamReducer'
 import { setHeroAction, setPlayerAction } from '../reducers/pickerReducer'
 
 const mapStateToProps = state => ({
