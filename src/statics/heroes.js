@@ -15,7 +15,7 @@ export const heroes = [
     portrait: ''
   },
   {
-    name: 'Phara',
+    name: 'Pharah',
     role: 'damage dealer',
     portrait: ''
   },

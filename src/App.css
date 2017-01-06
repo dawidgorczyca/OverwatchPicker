@@ -1,38 +1,235 @@
-.picker {
-  display: block;
-  margin: 20px;
-  width: 180px;
-  height: 100px;
+@font-face {
+    font-family: "Koverwatch";
+    src: url(/assets/fonts/koverwatch.ttf) format("truetype");
 }
-.picker-hero {
-  float: left;
-  position: relative;
-  width: 100px;
-  height: 100px;
-  background-color: silver;
+@font-face {
+    font-family: "OpenSansRegular";
+    src: url(/assets/fonts/OpenSans-Regular.ttf) format("truetype");
 }
-.picker-hero--name, .picker-hero--role {
-  position: absolute;
-  text-align: center;
+@font-face {
+    font-family: "OpenSansBold";
+    src: url(/assets/fonts/OpenSans-Bold.ttf) format("truetype");
 }
-.picker-hero--name {
-  top: 0px;
+body {
+  font-family: "OpenSansRegular";
 }
-.picker-hero--role {
-  bottom: 0px;
-}
-.picker-hero--portrait {
-  position: absolute;
-  width: 100px;
-  height: 100px;
+.interface {
+  background-image: url(/assets/interface.png);
+  background-repeat: no-repeat;
   overflow: hidden;
 }
-.picker-hero--portrait img {
-  width: 100px;
-}
-.picker-player {
+.picker {
   float: left;
-  width: 80px;
-  height: 100px;
-  background-color: gray;
+  width: 264px;
+}
+.picker--portrait {
+  width: 263px;
+  height: 307px;
+  position: relative;
+}
+.picker--portrait--hero {
+  display: block;
+  width: 234px;
+  height: 270px;
+  margin: 9px 0 0 14px;
+}
+.picker--portrait--hero-role {
+  position: absolute;
+  bottom: 0px;
+  left: 101px;
+  width: 56px;
+  height: 58px;
+  background-position: -263px -29px;
+  text-align: center;
+}
+.hero-role {
+  display: block;
+  width: 24px;
+  height: 29px;
+  background-position-y: 0px;
+  margin: 14px 0 0 16px;
+}
+.hero-role-healer {
+  background-position-x: -287px;
+}
+.hero-role-tank {
+  background-position-x: -311px;
+}
+.hero-role-damagedealer {
+  background-position-x: -263px;
+}
+.hero-role-defense {
+  background-position-x: -335px;
+}
+.hero-role-support {
+  background-position-x: -287px;
+}
+.picker--portrait--heroes-list {
+  position: absolute;
+  top: 50px;
+  left: 24px;
+  list-style: none;
+  width: 140px;
+  height: 174px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.heroes-list--item {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 4px;
+}
+.heroes-list--item--hero-name {
+  line-height: 30px;
+  font-size: 12px;
+  margin-left: 4px;
+}
+.hero-portrait-small {
+  float: left;
+  width: 30px;
+  height: 30px;
+  background-position-y: -307px;
+}
+
+.hero-portrait-small-ana {
+  background-position-x: 0px;
+}
+.hero-portrait-small-bastion {
+  background-position-x: -30px;
+}
+.hero-portrait-small-dva {
+  background-position-x: -60px;
+}
+.hero-portrait-small-genji {
+  background-position-x: -90px;
+}
+.hero-portrait-small-hanzo {
+  background-position-x: -120px;
+}
+.hero-portrait-small-junkrat {
+  background-position-x: -150px;
+}
+.hero-portrait-small-lucio {
+  background-position-x: -180px;
+}
+.hero-portrait-small-mccree {
+  background-position-x: -210px;
+}
+.hero-portrait-small-mei {
+  background-position-x: -240px;
+}
+.hero-portrait-small-mercy {
+  background-position-x: -270px;
+}
+.hero-portrait-small-pharah {
+  background-position-x: -300px;
+}
+.hero-portrait-small-reaper {
+  background-position-x: -330px;
+}
+.hero-portrait-small-reinhardt {
+  background-position-x: -360px;
+}
+.hero-portrait-small-roadhog {
+  background-position-x: -390px;
+}
+.hero-portrait-small-soldier76 {
+  background-position-x: -420px;
+}
+.hero-portrait-small-sombra {
+  background-position-x: -450px;
+}
+.hero-portrait-small-symmetra {
+  background-position-x: -480px;
+}
+.hero-portrait-small-torbjorn {
+  background-position-x: -510px;
+}
+.hero-portrait-small-tracer {
+  background-position-x: -540px;
+}
+.hero-portrait-small-widowmaker {
+  background-position-x: -570px;
+}
+.hero-portrait-small-winston {
+  background-position-x: -600px;
+}
+.hero-portrait-small-zarya {
+  background-position-x: -630px;
+}
+.hero-portrait-small-zenyatta {
+  background-position-x: -660px;
+}
+
+.hero-portrait-empty {
+  background-image: url(/assets/heroes/portrait_empty.png);
+}
+.hero-portrait-ana {
+  background-image: url(/assets/heroes/portrait_ana.png);
+}
+.hero-portrait-bastion {
+  background-image: url(/assets/heroes/portrait_bastion.png);
+}
+.hero-portrait-dva {
+  background-image: url(/assets/heroes/portrait_dva.png);
+}
+.hero-portrait-genji {
+  background-image: url(/assets/heroes/portrait_genji.png);
+}
+.hero-portrait-hanzo {
+  background-image: url(/assets/heroes/portrait_hanzo.png);
+}
+.hero-portrait-junkrat {
+  background-image: url(/assets/heroes/portrait_junkrat.png);
+}
+.hero-portrait-lucio {
+  background-image: url(/assets/heroes/portrait_lucio.png);
+}
+.hero-portrait-mccree {
+  background-image: url(/assets/heroes/portrait_mccree.png);
+}
+.hero-portrait-mei {
+  background-image: url(/assets/heroes/portrait_mei.png);
+}
+.hero-portrait-mercy {
+  background-image: url(/assets/heroes/portrait_mercy.png);
+}
+.hero-portrait-pharah {
+  background-image: url(/assets/heroes/portrait_pharah.png);
+}
+.hero-portrait-reaper {
+  background-image: url(/assets/heroes/portrait_reaper.png);
+}
+.hero-portrait-reinhardt {
+  background-image: url(/assets/heroes/portrait_reinhardt.png);
+}
+.hero-portrait-roadhog {
+  background-image: url(/assets/heroes/portrait_roadhog.png);
+}
+.hero-portrait-soldier76 {
+  background-image: url(/assets/heroes/portrait_soldier76.png);
+}
+.hero-portrait-sombra {
+  background-image: url(/assets/heroes/portrait_sombra.png);
+}
+.hero-portrait-symmetra {
+  background-image: url(/assets/heroes/portrait_symmetra.png);
+}
+.hero-portrait-torbjorn {
+  background-image: url(/assets/heroes/portrait_torbjorn.png);
+}
+.hero-portrait-tracer {
+  background-image: url(/assets/heroes/portrait_tracer.png);
+}
+.hero-portrait-widowmaker {
+  background-image: url(/assets/heroes/portrait_widowmaker.png);
+}
+.hero-portrait-winston {
+  background-image: url(/assets/heroes/portrait_winston.png);
+}
+.hero-portrait-zarya {
+  background-image: url(/assets/heroes/portrait_zarya.png);
+}
+.hero-portrait-zenyatta {
+  background-image: url(/assets/heroes/portrait_zenyatta.png);
 }
