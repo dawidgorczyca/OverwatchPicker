@@ -21,6 +21,7 @@ body {
 .picker {
   float: left;
   width: 264px;
+  margin-bottom: 50px;
 }
 .picker--portrait {
   width: 263px;
@@ -89,6 +90,13 @@ body {
   width: 30px;
   height: 30px;
   background-position-y: -307px;
+}
+.picker--player-name {
+  width: 100%;
+  font-family: "Koverwatch";
+  font-size: 48px;
+  color: #5c5c5c;
+  text-align: center;
 }
 
 .hero-portrait-small-ana {

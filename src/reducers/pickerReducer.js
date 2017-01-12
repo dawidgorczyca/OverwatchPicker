@@ -9,7 +9,7 @@ const update = (state, mutations) =>
 
 let warningsToCreate = []
 let errorsToCreate = []
-function validateData(dataCode){
+function validateData(dataCode) {
   errorsToCreate = []
   warningsToCreate = []
 
@@ -60,8 +60,9 @@ export const setHeroAction = (hero) => ({
   hero
 })
 
-export const setPlayerAction = () => ({
-  type: SET_PLAYER
+export const setPlayerAction = (player) => ({
+  type: SET_PLAYER,
+  player
 })
 
 export const INITIAL_STATE = {
@@ -72,7 +73,7 @@ export const INITIAL_STATE = {
   completed: false
 }
 
-const reducer = (state = INITIAL_STATE, action, heroes) => {
+const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SET_HERO:
       state = update(state, { hero: searchForHero(action.hero) })

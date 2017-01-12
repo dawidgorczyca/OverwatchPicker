@@ -1,18 +1,24 @@
 import React from 'react';
 import { heroes } from '../statics/heroes'
+import { playerObj } from '../statics/TypesAndDefaults'
 
 class PickerComponent extends React.Component {
    constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       heroName: '',
-      portraitState: true
-    };
-    this.toggleHeroesList = this.toggleHeroesList.bind(this);
+      portraitState: true,
+      playerName: '',
+      playerNameState: true,
+    }
+    this.toggleHeroesList = this.toggleHeroesList.bind(this)
+    this.togglePlayerNameSubmit = this.togglePlayerNameSubmit.bind(this)
+    this.handlePlayerNameSubmit = this.handlePlayerNameSubmit.bind(this)
+    this.handlePlayerNameChange = this.handlePlayerNameChange.bind(this)
   }
 
   setHero(heroName) {
-    this.setState({heroName: heroName});
+    this.setState({heroName: heroName})
     this.props.setHeroAction(heroName)
     this.toggleHeroesList()
   }
@@ -31,7 +37,7 @@ class PickerComponent extends React.Component {
   }
 
   toggleHeroesList(){
-    this.setState({portraitState: !this.state.portraitState});
+    this.setState({portraitState: !this.state.portraitState})
   }
 
   heroPortrait() {
@@ -45,7 +51,7 @@ class PickerComponent extends React.Component {
   }
 
   heroRole() {
-    if(this.props.picker.hero && this.props.picker.hero.role.length > 0) {
+    if(this.props.picker.hero && this.props.picker.hero.role) {
       return (
         <div className={'interface hero-role hero-role-' + this.prepareName(this.props.picker.hero.role)}></div>
       )
@@ -67,13 +73,62 @@ class PickerComponent extends React.Component {
     )
   }
 
+  playerName() {
+    if(this.state.playerNameState){
+      if(this.props.picker.player && this.props.picker.player.length > 0){
+        return (
+          <div className="picker--player-name" onClick={this.togglePlayerNameSubmit}>
+            {this.state.playerName}
+          </div>
+        )
+      } else {
+        return (
+          <div className="picker--player-name" onClick={this.togglePlayerNameSubmit}>
+            Enter player
+          </div>
+        )
+      }
+    } else {
+       return this.playerNameInput()
+    }
+  }
+
+  playerNameInput() {
+    return (
+      <div className="picker--player-name">
+        <form onSubmit={this.handlePlayerNameSubmit}>
+          <input type="text" value={this.state.playerName} onChange={this.handlePlayerNameChange} />
+        </form>
+      </div>
+    )
+  }
+
+  handlePlayerNameChange(event) {
+    this.setState({playerName: event.target.value})
+  }
+
+  handlePlayerNameSubmit(event) {
+    event.preventDefault();
+    let player = playerObj
+    player.name = this.state.playerName
+    this.updatePlayerStore(player.name)
+    this.togglePlayerNameSubmit()
+  }
+
+  updatePlayerStore(player) {
+    this.props.setPlayerAction(player)
+  }
+
+  togglePlayerNameSubmit() {
+    this.setState({playerNameState: !this.state.playerNameState})
+  }
+
   render() {
     const props = this.props.picker
     const heroPortrait = this.heroPortrait()
     const heroesList = this.heroesList()
     const heroRole = this.heroRole()
-    const playerName = props.player && props.player.name.length > 0 ? props.player.name : ''
-    const playerRole = props.player && props.player.role.length > 0 ? props.player.role : ''
+    const playerName = this.playerName()
     return (
       <div className="picker">
         <div className="picker--portrait interface">
@@ -83,12 +138,7 @@ class PickerComponent extends React.Component {
           </div>
         </div>
         <div className="picker--player">
-          <div className="picker--player-name">
-
-          </div>
-          <div className="picker--player-role">
-
-          </div>
+          {playerName}
         </div>
       </div>
     )
