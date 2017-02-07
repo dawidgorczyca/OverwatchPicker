@@ -2,7 +2,7 @@ import { heroes, heroTemplate } from '../statics/heroes'
 import { errors, warnings, playerObj } from '../statics/TypesAndDefaults'
 
 const SET_HERO = 'picker/SET_HERO'
-const SET_PLAYER = 'picker/SET_PLAYER'
+const SET_PLAYER_NAME = 'picker/SET_PLAYER_NAME'
 
 const update = (state, mutations) =>
   Object.assign({}, state, mutations)
@@ -38,7 +38,7 @@ function validateData(dataCode) {
   }
 }
 
-function searchForHero(heroName){
+function searchForHero(heroName) {
   let errorMsg = null
   let results = {}
 
@@ -60,8 +60,8 @@ export const setHeroAction = (hero) => ({
   hero
 })
 
-export const setPlayerAction = (player) => ({
-  type: SET_PLAYER,
+export const setPlayerNameAction = (player) => ({
+  type: SET_PLAYER_NAME,
   player
 })
 
@@ -78,8 +78,8 @@ const reducer = (state = INITIAL_STATE, action) => {
     case SET_HERO:
       state = update(state, { hero: searchForHero(action.hero) })
       break
-    case SET_PLAYER:
-      state = update(state, { player: action.player })
+    case SET_PLAYER_NAME:
+      state = update(state, { player: action.playerName })
       break
     default:
       state = update(state)

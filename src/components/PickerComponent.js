@@ -17,6 +17,10 @@ class PickerComponent extends React.Component {
     this.handlePlayerNameChange = this.handlePlayerNameChange.bind(this)
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+  }
+
   setHero(heroName) {
     this.setState({heroName: heroName})
     this.props.setHeroAction(heroName)
@@ -75,7 +79,7 @@ class PickerComponent extends React.Component {
 
   playerName() {
     if(this.state.playerNameState){
-      if(this.props.picker.player && this.props.picker.player.length > 0){
+      if(this.props.picker.player && this.props.picker.player.name.length > 0){
         return (
           <div className="picker--player-name" onClick={this.togglePlayerNameSubmit}>
             {this.state.playerName}
@@ -110,13 +114,12 @@ class PickerComponent extends React.Component {
   handlePlayerNameSubmit(event) {
     event.preventDefault();
     let player = playerObj
-    player.name = this.state.playerName
-    this.updatePlayerStore(player.name)
+    this.props.setPlayerNameAction(this.state.playerName)
     this.togglePlayerNameSubmit()
   }
 
   updatePlayerStore(player) {
-    this.props.setPlayerAction(player)
+    
   }
 
   togglePlayerNameSubmit() {
@@ -148,7 +151,7 @@ class PickerComponent extends React.Component {
 PickerComponent.propTypes = {
   picker: React.PropTypes.object.isRequired,
   setHeroAction: React.PropTypes.func.isRequired,
-  setPlayerAction: React.PropTypes.func.isRequired,
+  setPlayerNameAction: React.PropTypes.func.isRequired,
 };
 
 export default PickerComponent
