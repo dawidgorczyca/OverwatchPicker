@@ -1,35 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
 import Picker from '../components/PickerComponent'
-import bindIndexToActionCreators from '../store/bindIndexToActionCreators'
-import { addPickerAction } from '../reducers/teamReducer'
-import { setHeroAction, setPlayerAction } from '../reducers/pickerReducer'
 
-const mapStateToProps = state => ({
-  pickers: state
-})
+const Pickers = [1,2,3,4,5];
 
-const pickerDispatchProperties =
-  index =>
-    dispatch => bindActionCreators(
-        bindIndexToActionCreators({setHeroAction, setPlayerAction}, index),
-      dispatch)
-
-const mapDispatchToProps = dispatch => ({
-  addPicker() {
-    dispatch(addPickerAction())
-  },
-  dispatch
-})
-
-const PickerCollection = props =>
+export const PickerCollection = props =>
   <div className='container'>
-    {props.pickers.map((value, index) =>
-      <Picker picker={value} key={index}
-        {...pickerDispatchProperties(index)(props.dispatch)}/>
+    {Pickers.map((value, index) =>
+      <Picker picker={value} key={index}/>
     )}
   </div>
-
-export default connect(mapStateToProps, mapDispatchToProps)(PickerCollection)
