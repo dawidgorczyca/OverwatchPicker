@@ -19,7 +19,6 @@ class PickerComponent extends React.Component {
 
   setHero(heroName) {
     this.setState({heroName: heroName})
-    this.props.setHeroAction(heroName)
     this.toggleHeroesList()
   }
 
@@ -28,9 +27,8 @@ class PickerComponent extends React.Component {
   }
 
   getPortrait() {
-    const props = this.props.picker
-    if(props.hero && props.hero.name){
-      return 'hero-portrait-' + this.prepareName(props.hero.name)
+    if(this.state.heroName && this.state.heroName.length > 0){
+      return 'hero-portrait-' + this.prepareName(this.state.heroName)
     } else {
       return 'hero-portrait-empty'
     }
@@ -75,7 +73,7 @@ class PickerComponent extends React.Component {
 
   playerName() {
     if(this.state.playerNameState){
-      if(this.props.picker.player && this.props.picker.player.name.length > 0){
+      if(this.state.playerName.length > 0){
         return (
           <div className="picker--player-name" onClick={this.togglePlayerNameSubmit}>
             {this.state.playerName}
@@ -109,7 +107,6 @@ class PickerComponent extends React.Component {
 
   handlePlayerNameSubmit(event) {
     event.preventDefault();
-    this.props.setPlayerNameAction(this.state.playerName)
     this.togglePlayerNameSubmit()
   }
 
@@ -140,9 +137,7 @@ class PickerComponent extends React.Component {
 }
 
 PickerComponent.propTypes = {
-  picker: React.PropTypes.object.isRequired,
-  setHeroAction: React.PropTypes.func.isRequired,
-  setPlayerNameAction: React.PropTypes.func.isRequired,
+  picker: React.PropTypes.number.isRequired
 };
 
 export default PickerComponent
