@@ -17,10 +17,6 @@ class PickerComponent extends React.Component {
     this.handlePlayerNameChange = this.handlePlayerNameChange.bind(this)
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps)
-  }
-
   setHero(heroName) {
     this.setState({heroName: heroName})
     this.props.setHeroAction(heroName)
@@ -113,13 +109,8 @@ class PickerComponent extends React.Component {
 
   handlePlayerNameSubmit(event) {
     event.preventDefault();
-    let player = playerObj
     this.props.setPlayerNameAction(this.state.playerName)
     this.togglePlayerNameSubmit()
-  }
-
-  updatePlayerStore(player) {
-    
   }
 
   togglePlayerNameSubmit() {

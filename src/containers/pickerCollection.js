@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import Picker from '../components/PickerComponent'
 import bindIndexToActionCreators from '../store/bindIndexToActionCreators'
 import { addPickerAction } from '../reducers/teamReducer'
-import { setHeroAction, setPlayerAction } from '../reducers/pickerReducer'
+import { setHeroAction, setPlayerNameAction } from '../reducers/pickerReducer'
 
 const mapStateToProps = state => ({
   pickers: state
@@ -14,7 +14,7 @@ const mapStateToProps = state => ({
 const pickerDispatchProperties =
   index =>
     dispatch => bindActionCreators(
-        bindIndexToActionCreators({setHeroAction, setPlayerAction}, index),
+        bindIndexToActionCreators({setHeroAction, setPlayerNameAction}, index),
       dispatch)
 
 const mapDispatchToProps = dispatch => ({

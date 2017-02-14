@@ -55,14 +55,21 @@ function searchForHero(heroName) {
   return results;
 }
 
+function buildPlayerObj(playerName) {
+  const playerModifiedObj = {
+    name: playerName
+  }
+  return playerModifiedObj;
+}
+
 export const setHeroAction = (hero) => ({
   type: SET_HERO,
   hero
 })
 
-export const setPlayerNameAction = (player) => ({
+export const setPlayerNameAction = (playerName) => ({
   type: SET_PLAYER_NAME,
-  player
+  playerName
 })
 
 export const INITIAL_STATE = {
@@ -79,7 +86,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       state = update(state, { hero: searchForHero(action.hero) })
       break
     case SET_PLAYER_NAME:
-      state = update(state, { player: action.playerName })
+      state = update(state, { player: buildPlayerObj(action.playerName) })
       break
     default:
       state = update(state)
